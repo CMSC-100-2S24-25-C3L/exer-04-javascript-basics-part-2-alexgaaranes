@@ -1,4 +1,4 @@
-import index from './index.js'
+import index from './index.js'; // Import the module index
 
 // credential test array
 const credentials = [
@@ -16,5 +16,5 @@ const credentials = [
 // iterate through the list of tests
 credentials.forEach(element => {
     console.log(index.addAccount(element)?
-        "valid":"invalid");
+        "valid":"invalid"); // Call the function from imported index and show results
 });
