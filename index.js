@@ -10,21 +10,25 @@ const generateUniqueID = (firstName, lastName) => {
 
 // Adds an account that passed the validation to the user.txt
 const addAccount = ([firstName, lastName, email, age]) => {
-    if ((firstName === '') || (lastName === '') ||
-        (email === '') || (!validator.isEmail(email)) || 
-        (age < 18)) return false;
+    if([firstName, lastName, email, age].length != 4) return false;
+    // Input parameter validation
+    if ((firstName === '')
+    || (lastName === '')
+    || (email === '')
+    || (!validator.isEmail(email))
+    || (age < 18)) return false;
     
     // Process the data string to write
-    let userData = `${firstName},${lastName},${email},${generateUniqueID(firstName,lastName)}`;
-    console.log(userData);
+    let userData = `${firstName},${lastName},${email},${generateUniqueID(firstName,lastName)}\n`;
 
+    // try to save the data
     try{
         appendFileSync("./users.txt", userData);
     } catch (err){
         console.log(err);
-    } finally{
-        return true;
+        return false
     }
+    return true;
 }
 
 export default { addAccount }
