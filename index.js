@@ -12,7 +12,7 @@ const generateUniqueID = (firstName, lastName) => {
 const addAccount = ([firstName, lastName, email, age]) => {
     if ((firstName === '') || (lastName === '') ||
         (email === '') || (!validator.isEmail(email)) || 
-        (age <= 18)) return false;
+        (age < 18)) return false;
     
     // Process the data string to write
     let userData = `${firstName},${lastName},${email},${generateUniqueID(firstName,lastName)}`;
@@ -23,7 +23,7 @@ const addAccount = ([firstName, lastName, email, age]) => {
     } catch (err){
         console.log(err);
     } finally{
-        return false;
+        return true;
     }
 }
 
